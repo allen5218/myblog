@@ -1,3 +1,8 @@
+/*!
+ * Hux Blog v1.8.2 (http://huxpro.github.io)
+ * Copyright 2025 Hux <huxpro@gmail.com>
+ */
+
 @media (min-width: 1200px) {
   .post-container,
   .sidebar-container {
@@ -641,10 +646,43 @@ pre.highlight {
   font-size: 30px;
   font-weight: bold;
   color: #404040;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 @media only screen and (min-width: 768px) {
   .search-page #search-input {
     margin-left: 20px;
+  }
+}
+.search-page #search-input.loading {
+  opacity: 0.6;
+  color: #0085a1;
+}
+.search-page #search-input:focus {
+  color: #0085a1;
+}
+.search-page .search-loading {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #0085a1;
+  border-radius: 50%;
+  animation: searchSpin 1s linear infinite;
+}
+.search-page .search-loading.active {
+  display: block;
+}
+@keyframes searchSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 .search-page #search-results {

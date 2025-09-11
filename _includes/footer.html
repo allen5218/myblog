@@ -259,8 +259,12 @@
 </script>
 {% endif %}
 
-<!-- Simple Jekyll Search -->
+<!-- Lazy Loading Search with Vanilla JS -->
 <script>
+    // Search initialization state
+    let searchInitialized = false;
+    let searchCloseHandler = null;
+
     // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
     function htmlDecode(input) {
         var e = document.createElement('textarea');
@@ -269,49 +273,106 @@
         return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
 
-    SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('search-results'),
-        json: '/search.json',
-        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
-        noResultsText: 'No results',
-        limit: 50,
-        fuzzy: false,
-        // a hack to get escaped subtitle unescaped. for some reason, 
-        // post.subtitle w/o escape filter nuke entire search.
-        templateMiddleware: function (prop, value, template) {
-            if (prop === 'subtitle' || prop === 'title') {
-                if (value.indexOf("code")) {
-                    return htmlDecode(value);
+    // Initialize search functionality
+    function initializeSearch() {
+        if (searchInitialized) return Promise.resolve();
+        
+        return new Promise((resolve, reject) => {
+            SimpleJekyllSearch({
+                searchInput: document.getElementById('search-input'),
+                resultsContainer: document.getElementById('search-results'),
+                json: '/search.json',
+                searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+                noResultsText: 'No results',
+                limit: 50,
+                fuzzy: false,
+                // a hack to get escaped subtitle unescaped. for some reason, 
+                // post.subtitle w/o escape filter nuke entire search.
+                templateMiddleware: function (prop, value, template) {
+                    if (prop === 'subtitle' || prop === 'title') {
+                        if (value.indexOf("code")) {
+                            return htmlDecode(value);
+                        } else {
+                            return value;
+                        }
+                    }
+                },
+                success: function() {
+                    searchInitialized = true;
+                    resolve();
+                },
+                error: function() {
+                    reject(new Error('Failed to initialize search'));
+                }
+            });
+        });
+    }
+
+    // DOM ready handler with vanilla JavaScript
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchPage = document.querySelector('.search-page');
+        const searchOpen = document.querySelector('.search-icon a');
+        const searchClose = document.querySelector('.search-icon-close');
+        const searchInput = document.getElementById('search-input');
+        const body = document.body;
+
+        if (!searchOpen || !searchPage) return;
+
+        searchOpen.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const isOpening = !searchPage.classList.contains('search-active');
+            
+            if (isOpening) {
+                // Opening search
+                const prevClasses = body.className;
+                searchPage.classList.add('search-active');
+                
+                setTimeout(function () {
+                    body.classList.add('no-scroll');
+                }, 400);
+
+                // Initialize search on first open
+                if (!searchInitialized) {
+                    searchInput.placeholder = '載入中...';
+                    initializeSearch()
+                        .then(() => {
+                            searchInput.placeholder = '$ grep...';
+                            searchInput.focus();
+                        })
+                        .catch((error) => {
+                            console.error('Search initialization failed:', error);
+                            searchInput.placeholder = '搜尋載入失敗';
+                        });
                 } else {
-                    return value;
+                    searchInput.focus();
+                }
+
+                // Set up close handler if not already set
+                if (searchClose && !searchCloseHandler) {
+                    searchCloseHandler = function (e) {
+                        e.preventDefault();
+                        searchPage.classList.remove('search-active');
+                        body.className = prevClasses;
+                    };
+                    searchClose.addEventListener('click', searchCloseHandler);
                 }
             }
-        }
-    });
+        });
 
-    $(document).ready(function () {
-        var $searchPage = $('.search-page');
-        var $searchOpen = $('.search-icon');
-        var $searchClose = $('.search-icon-close');
-        var $searchInput = $('#search-input');
-        var $body = $('body');
+        // ESC key to close search
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && searchPage.classList.contains('search-active')) {
+                searchPage.classList.remove('search-active');
+                body.classList.remove('no-scroll');
+            }
+        });
 
-        $searchOpen.on('click', function (e) {
-            e.preventDefault();
-            $searchPage.toggleClass('search-active');
-            var prevClasses = $body.attr('class') || '';
-            setTimeout(function () {
-                $body.addClass('no-scroll');
-            }, 400)
-
-            if ($searchPage.hasClass('search-active')) {
-                $searchClose.on('click', function (e) {
-                    e.preventDefault();
-                    $searchPage.removeClass('search-active');
-                    $body.attr('class', prevClasses);  // from closure 
-                });
-                $searchInput.focus();
+        // Click outside to close search
+        searchPage.addEventListener('click', function(e) {
+            if (e.target === searchPage) {
+                searchPage.classList.remove('search-active');
+                body.classList.remove('no-scroll');
             }
         });
     });

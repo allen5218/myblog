@@ -60,10 +60,45 @@
     font-size: 30px;
     font-weight: bold;
     color: @gray-dark;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
    
     @media only screen and (min-width: 768px) {
       margin-left: 20px;
     }
+
+    &.loading {
+      opacity: 0.6;
+      color: @brand-primary;
+    }
+
+    &:focus {
+      color: @brand-primary;
+    }
+  }
+
+  // Loading spinner
+  .search-loading {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0,0,0,0.1);
+    border-top: 3px solid @brand-primary;
+    border-radius: 50%;
+    animation: searchSpin 1s linear infinite;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  @keyframes searchSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
   #search-results {
