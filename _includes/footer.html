@@ -307,8 +307,17 @@
         const searchClose = document.querySelector('.search-icon-close');
         const searchInput = document.getElementById('search-input');
         const body = document.body;
+        
+        // Store body classes state
+        let prevClasses = '';
 
         if (!searchOpen || !searchPage) return;
+
+        // Function to close search and restore body classes
+        function closeSearch() {
+            searchPage.classList.remove('search-active');
+            body.className = prevClasses;
+        }
 
         searchOpen.addEventListener('click', function (e) {
             e.preventDefault();
@@ -316,8 +325,8 @@
             const isOpening = !searchPage.classList.contains('search-active');
             
             if (isOpening) {
-                // Opening search
-                const prevClasses = body.className;
+                // Opening search - store current body classes
+                prevClasses = body.className;
                 searchPage.classList.add('search-active');
                 
                 setTimeout(function () {
@@ -341,8 +350,7 @@
                 if (searchClose && !searchCloseHandler) {
                     searchCloseHandler = function (e) {
                         e.preventDefault();
-                        searchPage.classList.remove('search-active');
-                        body.className = prevClasses;
+                        closeSearch();
                     };
                     searchClose.addEventListener('click', searchCloseHandler);
                 }
@@ -352,16 +360,14 @@
         // ESC key to close search
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && searchPage.classList.contains('search-active')) {
-                searchPage.classList.remove('search-active');
-                body.classList.remove('no-scroll');
+                closeSearch();
             }
         });
 
         // Click outside to close search
         searchPage.addEventListener('click', function(e) {
             if (e.target === searchPage) {
-                searchPage.classList.remove('search-active');
-                body.classList.remove('no-scroll');
+                closeSearch();
             }
         });
     });
