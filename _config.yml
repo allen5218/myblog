@@ -2,7 +2,7 @@
 title: Allen's Blog
 SEOTitle: Allen的部落格 | Allen's Blog
 header-img: img/home-bg.webp
-email: 4103allen@gmail.com
+email: contact@allenspace.de
 description: "這裡是Allen的部落格，分享技術和生活"
 keyword: "Allen's Blog, 博客, Allen, 部落格, allenspace, blog, allenblog"
 url: "https://blog.allenspace.de" # your host, for absolute URL
@@ -87,7 +87,7 @@ ga_domain: blog.allenspace.de
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "分享技術和生活"
+sidebar-about-description: "分享技術和生活<br>聯絡信箱: contact@allenspace.de"
 sidebar-avatar: https://cdn.jsdelivr.net/gh/allen57218/img@main/img/20250826090636_vjw18op3u3.webp # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
