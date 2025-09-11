@@ -308,52 +308,78 @@
         const searchInput = document.getElementById('search-input');
         const body = document.body;
         
-        // Store body classes state
+        // Store body classes state and timeout reference
         let prevClasses = '';
+        let noScrollTimeout = null;
 
         if (!searchOpen || !searchPage) return;
 
         // Function to close search and restore body classes
         function closeSearch() {
+            // Clear any pending no-scroll timeout
+            if (noScrollTimeout) {
+                clearTimeout(noScrollTimeout);
+                noScrollTimeout = null;
+            }
+            
             searchPage.classList.remove('search-active');
             body.className = prevClasses;
+        }
+
+        // Function to open search
+        function openSearch() {
+            // Store current body classes before opening
+            prevClasses = body.className;
+            searchPage.classList.add('search-active');
+            
+            // Set timeout for adding no-scroll class
+            noScrollTimeout = setTimeout(function () {
+                // Only add no-scroll if search is still active
+                if (searchPage.classList.contains('search-active')) {
+                    body.classList.add('no-scroll');
+                }
+                noScrollTimeout = null;
+            }, 400);
+
+            // Initialize search on first open
+            if (!searchInitialized) {
+                searchInput.placeholder = '載入中...';
+                initializeSearch();
+                // Give it a moment to load, then reset placeholder and focus
+                setTimeout(() => {
+                    searchInput.placeholder = '$ grep...';
+                    if (searchPage.classList.contains('search-active')) {
+                        searchInput.focus();
+                    }
+                }, 100);
+            } else {
+                // Only focus if search is still active
+                if (searchPage.classList.contains('search-active')) {
+                    searchInput.focus();
+                }
+            }
+
+            // Set up close handler if not already set
+            if (searchClose && !searchCloseHandler) {
+                searchCloseHandler = function (e) {
+                    e.preventDefault();
+                    closeSearch();
+                };
+                searchClose.addEventListener('click', searchCloseHandler);
+            }
         }
 
         searchOpen.addEventListener('click', function (e) {
             e.preventDefault();
             
-            const isOpening = !searchPage.classList.contains('search-active');
+            const isCurrentlyActive = searchPage.classList.contains('search-active');
             
-            if (isOpening) {
-                // Opening search - store current body classes
-                prevClasses = body.className;
-                searchPage.classList.add('search-active');
-                
-                setTimeout(function () {
-                    body.classList.add('no-scroll');
-                }, 400);
-
-                // Initialize search on first open
-                if (!searchInitialized) {
-                    searchInput.placeholder = '載入中...';
-                    initializeSearch();
-                    // Give it a moment to load, then reset placeholder and focus
-                    setTimeout(() => {
-                        searchInput.placeholder = '$ grep...';
-                        searchInput.focus();
-                    }, 100);
-                } else {
-                    searchInput.focus();
-                }
-
-                // Set up close handler if not already set
-                if (searchClose && !searchCloseHandler) {
-                    searchCloseHandler = function (e) {
-                        e.preventDefault();
-                        closeSearch();
-                    };
-                    searchClose.addEventListener('click', searchCloseHandler);
-                }
+            if (isCurrentlyActive) {
+                // Currently open - close it
+                closeSearch();
+            } else {
+                // Currently closed - open it
+                openSearch();
             }
         });
 
