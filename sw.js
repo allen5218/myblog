@@ -22,7 +22,7 @@ const PRECACHE_LIST = [
   "./js/simple-jekyll-search.min.js",
   "./js/giscus-setup.js",
   "./js/snackbar.js",
-  "https://cdn.jsdelivr.net/gh/allen57218/img@main/img/20250826090636_vjw18op3u3.webp",
+  "//cdn.jsdelivr.net/gh/allen57218/img@main/img/20250826090636_vjw18op3u3.webp",
   "./img/home-bg.webp",
   "./img/404-bg.jpg",
   "./css/hux-blog.min.css",
