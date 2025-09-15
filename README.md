@@ -12,8 +12,9 @@
 - **LaTeX 數學公式**：修復原版顯示問題，完美支援數學公式渲染
 - **文章更新時間**：支援顯示文章的最後更新時間
 - **XML Sitemap**：SEO 優化的網站地圖，幫助搜尋引擎索引
-- **深色模式**：完整的深色主題支援
+- **深色模式**：完整的深色主題支援，包含對 Fork Awesome 圖標的深色模式適配
 - **Giscus 評論系統**：基於 GitHub Discussions 的現代評論系統
+- **Fork Awesome 圖標庫**：使用 Fork Awesome 1.2.0 替代 Font Awesome，提供豐富的開源圖標支援
 
 本項目通過 Jekyll 在 GitHub Pages 上搭建 Blog 系統。Jekyll 是一個靜態網站生成器（Static Site Generator, SSG），它能將 Markdown、HTML、Liquid 模板等內容轉換成靜態網頁，Jekyll 會將你的文件內容加入你選擇主題的布局樣式中，最後產生屬於你的靜態部落格網站。
 
@@ -168,6 +169,20 @@ header-bg-css: "linear-gradient(to right, #1e3a8a, #3b82f6);"
 - 徑向漸層：`"radial-gradient(circle, #667eea, #764ba2);"`
 - 純色背景：`"#2c3e50;"`
 - 多重漸層：`"linear-gradient(135deg, #667eea 0%, #764ba2 100%);"`
+
+5. 添加標題背景遮罩：
+
+```yml
+header-mask: 0.3
+```
+
+使用 `header-mask` 欄位可以為標題背景圖片添加半透明的黑色遮罩層，提高標題文字的可讀性。遮罩值範圍為 0.0 到 1.0：
+- `0.0`：完全透明（無遮罩效果）
+- `0.3`：30% 透明度（適合大多數情況）
+- `0.5`：50% 透明度（中等遮罩效果）
+- `1.0`：完全不透明（完全黑色遮罩）
+
+這個功能特別適合在使用較亮的背景圖片時，確保標題文字始終保持良好的對比度和可讀性。
 
 ### RSS 訂閱 & XML Sitemap
 
