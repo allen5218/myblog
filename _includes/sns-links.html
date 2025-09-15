@@ -78,4 +78,24 @@
     </a>
   </li>
   {% endif %}
+  {% if site.reddit_username %}
+  <li>
+    <a target="_blank" href="https://www.reddit.com/user/{{ site.reddit_username }}" aria-label="Reddit Profile">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-reddit-alien fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {% endif %}
+  {% if site.buymeacoffee_username %}
+  <li>
+    <a target="_blank" href="https://www.buymeacoffee.com/{{ site.buymeacoffee_username }}" aria-label="Buy Me A Coffee">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-buymeacoffee fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {% endif %}
 </ul>
