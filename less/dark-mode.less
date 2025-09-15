@@ -585,10 +585,22 @@ body.navbar-theme-excluded {
   footer .fa-stack {
     .fa-circle {
       color: white !important;
+      transition: color 0.3s ease;
     }
     
     .fa-inverse {
       color: #404040 !important;
+      transition: color 0.3s ease;
+    }
+    
+    &:hover {
+      .fa-circle {
+        color: var(--post-link-hover) !important;
+      }
+      
+      .fa-inverse {
+        color: white !important;
+      }
     }
   }
   
@@ -596,10 +608,22 @@ body.navbar-theme-excluded {
   .sidebar-container .short-about .fa-stack {
     .fa-circle {
       color: white !important;
+      transition: color 0.3s ease;
     }
     
     .fa-inverse {
       color: #404040 !important;
+      transition: color 0.3s ease;
+    }
+    
+    &:hover {
+      .fa-circle {
+        color: var(--post-link-hover) !important;
+      }
+      
+      .fa-inverse {
+        color: white !important;
+      }
     }
   }
 }

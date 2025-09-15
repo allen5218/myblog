@@ -1161,15 +1161,31 @@ body.navbar-theme-excluded .intro-header .tags .tag:active {
 }
 [data-theme="dark"] footer .fa-stack .fa-circle {
   color: white !important;
+  transition: color 0.3s ease;
 }
 [data-theme="dark"] footer .fa-stack .fa-inverse {
   color: #404040 !important;
+  transition: color 0.3s ease;
+}
+[data-theme="dark"] footer .fa-stack:hover .fa-circle {
+  color: var(--post-link-hover) !important;
+}
+[data-theme="dark"] footer .fa-stack:hover .fa-inverse {
+  color: white !important;
 }
 [data-theme="dark"] .sidebar-container .short-about .fa-stack .fa-circle {
   color: white !important;
+  transition: color 0.3s ease;
 }
 [data-theme="dark"] .sidebar-container .short-about .fa-stack .fa-inverse {
   color: #404040 !important;
+  transition: color 0.3s ease;
+}
+[data-theme="dark"] .sidebar-container .short-about .fa-stack:hover .fa-circle {
+  color: var(--post-link-hover) !important;
+}
+[data-theme="dark"] .sidebar-container .short-about .fa-stack:hover .fa-inverse {
+  color: white !important;
 }
 [data-theme="dark"] .highlight,
 [data-theme="dark"] pre.highlight {
