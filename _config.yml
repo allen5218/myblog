@@ -87,7 +87,7 @@ ga_domain: blog.allenspace.de
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "分享技術和生活<br>聯絡信箱: mailto:contact@allenspace.de"
+sidebar-about-description: "分享技術和生活<br>聯絡信箱: <a href='mailto:contact@allenspace.de'>contact@allenspace.de</a>"
 sidebar-avatar: https://cdn.jsdelivr.net/gh/allen57218/img@main/img/20250826090636_vjw18op3u3.webp # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
