@@ -85,15 +85,9 @@
         })
 
         /**
-         * Since Fastclick is used to delegate 'touchstart' globally
-         * to hack 300ms delay in iOS by performing a fake 'click',
-         * Using 'e.stopPropagation' to stop 'touchstart' event from 
-         * $toggle/$collapse will break global delegation.
-         * 
-         * Instead, we use a 'e.target' filter to prevent handler
-         * added to document close HuxNav.  
-         *
-         * Also, we use 'click' instead of 'touchstart' as compromise
+         * Click outside to close navigation
+         * Use 'e.target' filter to prevent clicks on toggle/collapse
+         * from closing the navigation menu
          */
         document.addEventListener('click', function (e) {
             if (e.target == $toggle) return;

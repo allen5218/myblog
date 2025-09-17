@@ -29,7 +29,6 @@ const PRECACHE_LIST = [
   "./css/bootstrap.min.css",
   "//cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.2.0/css/fork-awesome.min.css",
   "//cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.2.0/fonts/forkawesome-webfont.woff2?v=1.2.0",
-  "//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"
 ]
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
