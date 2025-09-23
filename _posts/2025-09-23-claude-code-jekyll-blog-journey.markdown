@@ -34,7 +34,7 @@ tags:
 
 原本計劃在之後將依賴 jQuery 的代碼完全重寫成原生的 Web API，並引入 HTMX，切換文章時用 Ajax 無縫載入下一篇文章，結合 PWA 應該能實現近乎原生 app 的體驗。但實際操作後發現 tag cloud 插件和語言切換還是依賴 jQuery，所以後來只把 jQuery 的動畫重寫成 vanilla JS 而已。HTMX 也是在做的過程中發現太複雜了，而且原本就有 sw.js 所以速度也沒有提升太多，就放棄了。
 
-原本還想要讓 GitHub Action 在部署網頁的時候遍歷文章內的所有 code，對每種語言使用該語言的 Formatter 轉換來格式化 code 中的空格，讓 Mermaid 和 LaTeX 在 build 的過程中就轉換成 SVG，還要引入自建一個 HTMX 留言板，後端用 Cloudflare Workers 和 D1 資料庫，但後來想了想這些功能我基本上用不到，所以也放棄了。
+原本還想要讓 GitHub Action 在部署網頁的時候遍歷文章內的所有 code，對每種語言使用該語言的 Formatter 轉換來格式化 code 中的空格，讓 Mermaid 和 LaTeX 在 build 的過程中就轉換成 SVG，還想要自建一個 HTMX 留言板，後端用 Cloudflare Workers 和 D1 資料庫，但後來想了想這些功能我基本上用不到而且做起來太複雜，所以也放棄了。
 
 ## SEO 優化
 
