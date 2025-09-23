@@ -53,4 +53,4 @@ tags:
 - 基底：黃玄的 Jekyll 部落格
 - 部署：GitHub Pages
 - AI 工具：Claude Code
-- 新增功能：深色模式、Mermaid 圖表、gitcus留言版、SEO 優化、Sitemap 等
+- 新增功能：深色模式、Mermaid 圖表、giscus留言版、SEO 優化、Sitemap 等
