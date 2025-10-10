@@ -1,6 +1,6 @@
 ---
 layout:     keynote
-title:      "募課啟動 - AI 跨領域學習社群"
+title:      "課程啟動 - AI 跨領域學習社群"
 subtitle:   "🎞  Slides: AI in Action Transforming Ideas into Impact"
 iframe:     "//slide.allenspace.de/"
 nav-style:  "invert"
