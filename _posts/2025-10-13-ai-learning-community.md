@@ -15,9 +15,10 @@ tags:
 
 > [點擊這裡查看內文](#post)
 
+<p id="post"></p>
+
 ### [Watching Slides Fullscreen →](https://slide.allenspace.de/)
 
-<p id="post"></p>
 
 2025 年十月，我總算把這個想做很久的社群給弄起來了。
 
@@ -50,7 +51,7 @@ tags:
 |6	|《人月神話》導讀	|軟體協作與團隊邏輯|
 |7	|OpenWebUI + MCPO	|工具調用與系統整合實作|
 |8	|《採購與供應鏈管理》導讀	|AI × 管理決策案例|
-|9	|回顧成果與文章導讀《Obituary for the greatest monument to logical AGI》	|收尾與反思：我們學到什麼？|
+|9	|回顧成果與文章導讀[《Obituary for the greatest monument to logical AGI》](https://yuxi.ml/cyc/)	|收尾與反思：我們學到什麼？|
 
 接下來說說這個社群的規劃細節。
 
