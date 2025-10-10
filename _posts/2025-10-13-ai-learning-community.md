@@ -3,7 +3,6 @@ layout:     keynote
 title:      "課程啟動 - AI 跨領域學習社群"
 subtitle:   "🎞  Slides: AI in Action Transforming Ideas into Impact"
 iframe:     "//slide.allenspace.de/"
-nav-style:  "invert"
 date:       2025-10-12
 author:     "Allen"
 tags:
