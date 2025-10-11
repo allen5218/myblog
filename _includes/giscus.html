@@ -1,5 +1,22 @@
 <div id="giscus_thread" class="giscus-thread">
   {% if site.giscus.repo %}
+    <!-- Pass giscus config from _config.yml to JavaScript -->
+    <script>
+      window.giscusConfig = {
+        repo: "{{ site.giscus.repo }}",
+        repoId: "{{ site.giscus.repo_id }}",
+        category: "{{ site.giscus.category }}",
+        categoryId: "{{ site.giscus.category_id }}",
+        mapping: "{{ site.giscus.mapping | default: 'pathname' }}",
+        strict: "{{ site.giscus.strict | default: '0' }}",
+        reactionsEnabled: "{{ site.giscus.reactions_enabled | default: '0' }}",
+        emitMetadata: "{{ site.giscus.emit_metadata | default: '0' }}",
+        inputPosition: "{{ site.giscus.input_position | default: 'top' }}",
+        darkTheme: "{{ site.giscus.dark_theme | default: 'dark_dimmed' }}",
+        lightTheme: "{{ site.giscus.light_theme | default: 'light' }}",
+        lang: "{{ site.giscus.lang | default: 'zh-TW' }}"
+      };
+    </script>
     <script defer src="{{ '/js/giscus-setup.js' | relative_url }}"></script>
     <noscript>
       Please enable JavaScript to view the

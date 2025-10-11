@@ -140,8 +140,14 @@
         const giscusFrame = document.querySelector('iframe.giscus-frame');
         if (giscusFrame) {
             const isDark = theme === DARK_THEME;
-            const giscusTheme = isDark ? 'dark_dimmed' : 'light';
-            
+
+            // Get theme names from giscusConfig (set in giscus.html from _config.yml)
+            const config = window.giscusConfig || {};
+            const darkTheme = config.darkTheme || 'dark_dimmed';
+            const lightTheme = config.lightTheme || 'light';
+
+            const giscusTheme = isDark ? darkTheme : lightTheme;
+
             giscusFrame.contentWindow.postMessage({
                 giscus: {
                     setConfig: {

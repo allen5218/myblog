@@ -50,6 +50,14 @@ layout: default
                 <!-- disqus 评论框 end -->
                 {% endif %}
 
+                {% if site.giscus.repo %}
+                <!-- giscus 评论框 start -->
+                <div class="comment">
+                    {% include giscus.html %}
+                </div>
+                <!-- giscus 评论框 end -->
+                {% endif %}
+
             </div>
 
             <!-- Sidebar Container -->

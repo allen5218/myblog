@@ -75,7 +75,7 @@ giscus:
   strict: 0 # use strict identification mode
   reactions_enabled: 0 # enable (1) or disable (0) emoji reactions
   input_position: top # whether to display input form below (bottom) or above (top) the comments
-  dark_theme: dark # name of the dark color scheme (preferred works well with dark mode)
+  dark_theme: dark_dimmed # name of the dark color scheme (preferred works well with dark mode)
   light_theme: light # name of the light color scheme (preferred works well with light mode)
   emit_metadata: 0
   lang: zh-TW
