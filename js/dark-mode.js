@@ -18,15 +18,6 @@
     let isToggling = false;
     const TOGGLE_COOLDOWN = 300;
 
-    // Get elements
-    function getElements() {
-        return {
-            body: document.body,
-            navbar: document.querySelector('.navbar-custom'),
-            themeToggle: document.querySelector('.theme-toggle')
-        };
-    }
-
     // Get current theme from localStorage or use config default
     function getCurrentTheme() {
         return localStorage.getItem(THEME_KEY) || DEFAULT_THEME;
@@ -39,18 +30,18 @@
 
     // Apply theme to document
     function applyTheme(theme) {
-        const elements = getElements();
-        
         if (theme === DARK_THEME) {
             document.documentElement.setAttribute('data-theme', 'dark');
         } else {
             document.documentElement.removeAttribute('data-theme');
         }
-        
+
         // Update Disqus theme if present
         updateDisqusTheme(theme);
         // Update Giscus theme if present
         updateGiscusTheme(theme);
+        // Update Medium Zoom theme if present
+        updateMediumZoomTheme(theme);
     }
 
     // Check if current page should skip navbar theme switching
@@ -65,8 +56,6 @@
 
     // Apply conditional theme logic based on page front matter
     function applyConditionalTheme(theme) {
-        const elements = getElements();
-        
         if (shouldSkipNavbarTheme()) {
             // Only apply theme to content areas, not navbar
             applyContentTheme(theme);
@@ -88,8 +77,10 @@
         }
         
         updateDisqusTheme(theme);
-        // Update Giscus theme if present  
+        // Update Giscus theme if present
         updateGiscusTheme(theme);
+        // Update Medium Zoom theme if present
+        updateMediumZoomTheme(theme);
     }
 
     // Toggle theme with debounce protection
@@ -132,6 +123,15 @@
             } catch (e) {
                 console.log('Disqus theme update failed:', e);
             }
+        }
+    }
+
+    // Update Medium Zoom theme
+    function updateMediumZoomTheme(theme) {
+        // Call the global function if it exists (defined in medium-zoom-init.js)
+        if (typeof window.updateMediumZoomTheme === 'function') {
+            const isDark = theme === DARK_THEME;
+            window.updateMediumZoomTheme(isDark);
         }
     }
 

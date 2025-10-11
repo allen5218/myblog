@@ -13,7 +13,8 @@
 - **文章更新時間**：支援顯示文章的最後更新時間
 - **XML Sitemap**：SEO 優化的網站地圖，幫助搜尋引擎索引
 - **深色模式**：完整的深色主題支援，包含對 Fork Awesome 圖標的深色模式適配
-- **Giscus 評論系統**：基於 GitHub Discussions 的現代評論系統
+- **Giscus 評論系統**：基於 GitHub Discussions 的現代評論系統，統一配置於 `_config.yml`，自動適配主題
+- **Medium Zoom 圖片放大**：點擊圖片放大功能，提供優雅的 Medium 風格縮放效果，支援深色/淺色主題
 - **Fork Awesome 圖標庫**：使用 Fork Awesome 1.2.0 替代 Font Awesome，提供豐富的開源圖標支援
 
 本項目通過 Jekyll 在 GitHub Pages 上搭建 Blog 系統。Jekyll 是一個靜態網站生成器（Static Site Generator, SSG），它能將 Markdown、HTML、Liquid 模板等內容轉換成靜態網頁，Jekyll 會將你的文件內容加入你選擇主題的布局樣式中，最後產生屬於你的靜態部落格網站。
@@ -48,50 +49,83 @@
 
 ### Giscus 評論系統設定
 
-本項目使用 [Giscus](https://giscus.app/) 作為主要評論系統，基於 GitHub Discussions 提供互動功能。要為你的項目配置 Giscus，需要修改以下兩個文件：
+本項目使用 [Giscus](https://giscus.app/) 作為主要評論系統，基於 GitHub Discussions 提供互動功能。**所有設定已統一到 `_config.yml`，無需修改 JavaScript 檔案。**
 
 #### 1. 修改 `_config.yml` 檔案
 
-找到 `giscus` 區塊（約第 66 行），更新為你的倉庫資訊：
+找到 `giscus` 區塊（約第 69 行），更新為你的倉庫資訊：
 
 ```yml
 giscus:
-  repo: your-username/your-repo-name # 替換為你要設定存放的 GitHub 用戶名和倉庫名
-  repo_id: YOUR_REPO_ID # 替換為從 giscus.app 取得的倉庫 ID
-  category: Comments # 替換為你要設定存放的 GitHub Discussion 分類名稱
-  category_id: YOUR_CATEGORY_ID # 替換為從 giscus.app 取得的分類 ID
-  mapping: pathname # 識別文章的方式，建議保持 pathname
+  repo: your-username/your-repo-name # 替換為你的 GitHub 用戶名和倉庫名
+  repo_id: YOUR_REPO_ID # 從 giscus.app 取得的倉庫 ID
+  category: Comments # GitHub Discussion 分類名稱
+  category_id: YOUR_CATEGORY_ID # 從 giscus.app 取得的分類 ID
+  mapping: pathname # 識別文章的方式（建議保持 pathname）
   strict: 0 # 使用嚴格識別模式（0=關閉，1=開啟）
-  reactions_enabled: 1 # 啟用 emoji 反應（0=關閉，1=開啟）
-  input_position: bottom # 輸入框位置（bottom 或 top）
+  reactions_enabled: 0 # 啟用 emoji 反應（0=關閉，1=開啟）
+  input_position: top # 輸入框位置（top 或 bottom）
+  dark_theme: dark_dimmed # 深色模式使用的主題
+  light_theme: light # 淺色模式使用的主題
+  emit_metadata: 0 # 是否發送元數據
+  lang: zh-TW # 介面語言
 ```
 
-#### 2. 修改 `js/giscus-setup.js` 檔案
+**重要提示**：所有 Giscus 設定都在 `_config.yml` 中完成，系統會自動將這些設定傳遞給 JavaScript。不需要再修改任何 JavaScript 檔案！
 
-找到第 24-27 行的 `giscusAttributes` 配置，更新為你的設定：
-
-```javascript
-"data-repo": "your-username/your-repo-name", // 替換為你要設定存放的 GitHub 用戶名和倉庫名
-"data-repo-id": "YOUR_REPO_ID", // 替換為從 giscus.app 取得的倉庫 ID
-"data-category": "Comments", // 替換為你要設定存放的 GitHub Discussion 分類名稱
-"data-category-id": "YOUR_CATEGORY_ID", // 替換為從 giscus.app 取得的分類 ID
-```
-
-#### 3. 設定步驟
+#### 2. 設定步驟
 
 1. 前往 [giscus.app](https://giscus.app/) 
 2. 輸入你的 GitHub 倉庫（格式：`username/repo`）
 3. 選擇頁面 ↔️ discussions 映射關係（建議選擇「Discussion 的標題包含頁面的 `pathname`」）
 4. 選擇 Discussion 分類（建議新建一個 "Comments" 分類）
-5. 複製生成的設定到上述兩個文件中
+5. 複製生成的設定值到 `_config.yml` 中的對應欄位
 
-#### 4. 倉庫要求
+#### 3. 倉庫要求
 
 - 倉庫必須是**公開的**
 - 必須安裝 [giscus app](https://github.com/apps/giscus)
 - 必須開啟 Discussions 功能（在倉庫的 Settings → General → Features 中啟用）
 
-設定完成後，評論系統會自動適配網站的深色/淺色主題，深色模式使用 `dark_dimmed` 主題。
+#### 4. 主題支援
+
+評論系統會自動適配網站的深色/淺色主題：
+- **淺色模式**：使用 `light_theme` 設定的主題（預設：`light`）
+- **深色模式**：使用 `dark_theme` 設定的主題（預設：`dark_dimmed`）
+- **即時切換**：當使用者切換網站主題時，評論區主題會即時更新
+
+可以在 [Giscus 主題預覽](https://giscus.app) 查看所有可用的主題選項。
+
+### Medium Zoom 圖片放大功能
+
+本部落格內建 [Medium Zoom](https://github.com/francoischalifour/medium-zoom) 圖片點擊放大功能，提供優雅的 Medium 風格縮放效果。
+
+#### 功能特點
+
+- **自動啟用**：所有文章中的圖片（Markdown 的 `![]()`）都會自動支援點擊放大
+- **主題適配**：放大時的背景色會根據當前主題自動調整
+  - 淺色模式：白色半透明背景
+  - 深色模式：深灰色半透明背景
+- **即時切換**：切換網站主題時，圖片放大的背景色會即時更新
+- **輕量級**：僅 ~10KB，不影響頁面載入速度
+- **零配置**：無需在 Front Matter 中額外設定
+
+#### 使用方式
+
+在 Markdown 文章中正常插入圖片即可：
+
+```markdown
+![圖片描述](圖片路徑)
+```
+
+圖片會自動獲得點擊放大功能，點擊圖片即可放大查看，再次點擊或按 ESC 鍵關閉。
+
+#### 技術細節
+
+- 使用 Medium Zoom v1.1.0
+- 整合於 `post.html` 和 `keynote.html` 兩種布局
+- 通過 `js/medium-zoom-init.js` 初始化並整合主題切換
+- 與 `js/dark-mode.js` 同步，確保主題一致性
 
 ### Posts
 

@@ -65,6 +65,8 @@ Key `_config.yml` settings:
 - **Mermaid Diagrams**: Unified handling through `_includes/mermaid.html` with automatic theme switching and dynamic re-rendering support
 - **RSS Feed**: Automatic RSS 2.0 feed generation for content syndication
 - **XML Sitemap**: SEO-optimized sitemap generation for search engine indexing
+- **Giscus Comments**: GitHub Discussions-based comment system with unified configuration and theme support
+- **Medium Zoom**: Click-to-zoom functionality for images with theme-aware background
 
 ### Mermaid Configuration
 The blog uses a centralized mermaid configuration system:
@@ -99,5 +101,53 @@ The blog includes automatic RSS and sitemap generation:
 - **Implementation**: Plugin-free custom Jekyll template similar to RSS logic
 
 Both systems use conditional rendering and will only generate content when their respective configuration flags are enabled.
+
+### Giscus Comments Configuration
+The blog uses Giscus for comments, with all settings centralized in `_config.yml`:
+
+**Configuration Location**: `_config.yml` (lines 69-81)
+```yaml
+giscus:
+  repo: allen5218/myblog
+  repo_id: R_kgDOPaqk9Q
+  category: Comments
+  category_id: DIC_kwDOPaqk9c4Cuwao
+  mapping: pathname
+  strict: 0
+  reactions_enabled: 0
+  input_position: top
+  dark_theme: dark_dimmed
+  light_theme: light
+  emit_metadata: 0
+  lang: zh-TW
+```
+
+**Implementation Details**:
+- **Unified Configuration**: All Giscus settings are defined in `_config.yml` and passed to JavaScript via `_includes/giscus.html`
+- **Theme Integration**: Automatically switches between `dark_theme` and `light_theme` based on site theme
+- **Layout Support**: Available in both `post.html` and `keynote.html` layouts
+- **Setup Script**: `js/giscus-setup.js` reads configuration from `window.giscusConfig`
+- **Theme Switching**: `js/dark-mode.js` updates Giscus theme in real-time when user toggles site theme
+
+**To modify Giscus settings**: Only edit `_config.yml` - no need to touch JavaScript files.
+
+### Medium Zoom Configuration
+The blog includes Medium Zoom for image click-to-zoom functionality:
+
+**Implementation**:
+- **Library**: `js/medium-zoom.min.js` (v1.1.0, ~10KB)
+- **Initialization**: `js/medium-zoom-init.js` handles setup and theme integration
+- **Target**: All images within `.post-container` automatically get zoom functionality
+- **Theme Support**: Background color adapts to current theme
+  - Light mode: `rgba(255, 255, 255, 0.95)`
+  - Dark mode: `rgba(25, 25, 25, 0.95)`
+- **Layout Support**: Enabled in both `post.html` and `keynote.html` layouts
+
+**Configuration Options** (in `js/medium-zoom-init.js`):
+- `margin: 24` - Space around zoomed image
+- `background` - Theme-aware background color
+- `scrollOffset: 0` - Scroll offset for zoom
+
+**Theme Switching**: Integrated with `js/dark-mode.js` via `window.updateMediumZoomTheme()` function.
 
 When modifying posts, ensure proper YAML front matter format and follow existing conventions for tags, images, and metadata.
