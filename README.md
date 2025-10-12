@@ -1,6 +1,6 @@
 # [Allen's Blog](https://blog.allenspace.de/)
 
-![Blog Desktop Screenshot](http://huangxuan.me/img/blog-desktop.jpg)
+![Blog Desktop Screenshot](/img/blog-desktop.jpg)
 
 [User Manual 👉](_doc/Manual.md)
 
@@ -286,7 +286,7 @@ multilingual: true
 
 ### 使用Keynote
 
-![](http://huangxuan.me/img/blog-keynote.jpg)
+![](/img/blog-keynote.jpg)
 
 使用方法，在markdown的**Front Matter**中加入：
 
