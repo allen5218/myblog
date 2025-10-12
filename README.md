@@ -244,7 +244,35 @@ sitemap: true
 - 網站首頁和所有靜態頁面
 - 所有部落格文章
 - 適當的優先度和更新頻率設定
-- 符合 XML Sitemap 0.9 標準
+- 符合 XML Sitemap 0.9 標準，支援 SEO 最佳實踐
+
+**多語言頁面支援：**
+
+對於具有多語言版本的頁面（如 About 頁面），sitemap 會自動生成符合 Google SEO 建議的 `hreflang` 標記：
+
+```yml
+# 在頁面的 Front Matter 中設定
+multilingual: true
+```
+
+當頁面標記為 `multilingual: true` 時，sitemap 會自動為該頁面產生：
+- 主要頁面 URL（如 `/about/`）
+- 中文版本 URL（`/about/?lang=zh`）
+- 英文版本 URL（`/about/?lang=en`）
+- 預設語言標記（`hreflang="x-default"`）
+
+範例輸出：
+```xml
+<url>
+  <loc>https://blog.allenspace.de/about/</loc>
+  <xhtml:link rel="alternate" hreflang="zh" href="https://blog.allenspace.de/about/?lang=zh" />
+  <xhtml:link rel="alternate" hreflang="en" href="https://blog.allenspace.de/about/?lang=en" />
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://blog.allenspace.de/about/" />
+  ...
+</url>
+```
+
+這樣可以幫助搜尋引擎正確識別頁面的不同語言版本，為不同地區的使用者提供對應的搜尋結果。
 
 **優先度設定：**
 - 首頁：1.0（每週更新）

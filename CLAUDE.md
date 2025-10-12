@@ -88,8 +88,13 @@ The blog includes automatic RSS and sitemap generation:
 
 #### XML Sitemap (`sitemap.xml`)
 - **Location**: Available at `/sitemap.xml`
-- **Format**: XML Sitemap 0.9 standard for search engines
+- **Format**: XML Sitemap 0.9 standard with hreflang support for multilingual pages
 - **Content**: All pages including homepage, static pages, and posts
+- **Multilingual Support**:
+  - Pages with `multilingual: true` automatically include hreflang alternate links
+  - Generates language-specific URLs with `?lang=zh` and `?lang=en` parameters
+  - Includes `x-default` hreflang for default language fallback
+  - Example: `/about/` page generates links for `/about/?lang=zh`, `/about/?lang=en`, and default
 - **Priority Scheme**:
   - Homepage: 1.0 (weekly updates)
   - About page: 0.9 (monthly updates)
@@ -98,7 +103,7 @@ The blog includes automatic RSS and sitemap generation:
   - Blog posts: 0.6 (yearly updates)
 - **Exclusions**: 404.html and offline.html pages are excluded
 - **Control**: Enable/disable with `sitemap: true/false` in `_config.yml`
-- **Implementation**: Plugin-free custom Jekyll template similar to RSS logic
+- **Implementation**: Plugin-free custom Jekyll template with xhtml namespace for SEO best practices
 
 Both systems use conditional rendering and will only generate content when their respective configuration flags are enabled.
 

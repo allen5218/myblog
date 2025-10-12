@@ -3,7 +3,8 @@ layout: null
 ---
 {%- if site.sitemap -%}
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- 首頁 -->
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}/</loc>
@@ -16,6 +17,11 @@ layout: null
   <!-- 靜態頁面: {{ page.url }} -->
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ page.url }}</loc>
+      {%- if page.multilingual -%}
+    <xhtml:link rel="alternate" hreflang="zh" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}?lang=zh" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+      {%- endif -%}
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>{%- if page.url == '/about.html' -%}monthly{%- elsif page.url == '/archive.html' -%}weekly{%- else -%}monthly{%- endif -%}</changefreq>
     <priority>{%- if page.url == '/about.html' -%}0.9{%- elsif page.url == '/archive.html' -%}0.8{%- else -%}0.7{%- endif -%}</priority>
