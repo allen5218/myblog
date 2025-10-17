@@ -94,7 +94,7 @@ sidebar-avatar: https://cdn.jsdelivr.net/gh/allen57218/img@main/img/202508260906
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
-featured-condition-size: 0 #預設是1 A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 1 #預設是1 A tag will be featured if the size of it is more than this condition value
 
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
