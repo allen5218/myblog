@@ -4,7 +4,7 @@ title:      "C/C++ 代碼顯示測試"
 subtitle:   "測試 C/C++ 代碼塊在手機端的顯示修復"
 date:       2025-08-16
 author:     "Claude"
-header-img: "https://cdn.jsdelivr.net/gh/allen57218/img@main/img/20250830050705_evvnbpcj0l.webp"
+header-img: "https://img.allenspace.de/20250830050705_evvnbpcj0l.32idicxze0.webp"
 catalog: true
 tags:
     - 測試
