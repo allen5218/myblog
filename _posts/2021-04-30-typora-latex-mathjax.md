@@ -33,7 +33,7 @@ tags:
 
 首先，Typora顯示公式，必須要使用Markdown 擴展語法，啟用內聯公式
 
-![](https://cdn.jsdelivr.net/gh/allen57218/img@main/img/20250902064252_y7pppdm0it.webp)
+![](https://img.allenspace.de/20250902064252_y7pppdm0it.4claondm8v.webp)
 
 
 #### 使用
@@ -108,7 +108,7 @@ $ A = \{ \langle G \rangle \vert G \text{ is a connected undirected graph}\} $
 
 或者單獨提出來作為一個include的文件
 
-![](https://cdn.jsdelivr.net/gh/allen57218/img@main/img/20250902064416_mu4hn1pyto.webp)
+![](https://img.allenspace.de/20250902064416_mu4hn1pyto.92qjn2kj56.webp)
 
 #### page.mathjax
 
@@ -192,7 +192,7 @@ $ \Sigma= \\{ 0, 1 \\} $
 
 可是這樣在Typora中又會顯示錯誤，類似於這樣：
 
-![](https://cdn.jsdelivr.net/gh/allen57218/img@main/img/20250902064523_ax4vzrr6cs.webp)
+![](https://img.allenspace.de/20250902064523_ax4vzrr6cs.6m4b85kgk5.webp)
 
 #### 解決辦法
 
