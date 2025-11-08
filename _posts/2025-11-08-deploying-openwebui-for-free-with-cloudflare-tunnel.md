@@ -5,6 +5,7 @@ subtitle:   "Deploying OpenWebUI for Free with Cloudflare Tunnel"
 date:       2025-11-08
 author:     "Allen"
 header-img: "https://img.allenspace.de/IMG_0325.8z6xy7a4vc.webp"
+header-mask: 0.7
 catalog: true
 tags:
     - LLM
@@ -17,7 +18,7 @@ tags:
 你想要擁有一個私人的 AI 對話平台，但不知道如何開始嗎？ 想要從任何地方訪問你的 AI 助手，但不懂複雜的網絡配置嗎？
 那麼你可以使用 **Cloudflare Tunnel + DigitalPlat 免費域名** 零成本搭建一個完整的 OpenWebUI 實例，通過免費域名和 Cloudflare 的全球 CDN 實現安全訪問，無需開放任何服務器端口，也不需要設定公網 IP。
 
-本文以AWS EC2部署 (也可以是任何的Linux主機，或使用個人電腦安裝Docker Desktop來部署) 部署方式可以是 Docker 命令、Docker Compose 或 Kubernetes，本文以 Docker 為例。
+本文以AWS EC2部署 (也可以是任何的Linux主機，或使用個人電腦安裝Docker Desktop來部署)<br>部署方式可以是 Docker 命令、Docker Compose 或 Kubernetes，本文以 Docker 為例。
 
 ------
 
