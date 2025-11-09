@@ -261,9 +261,9 @@ docker logs openwebui
 
 2. 點擊你創建的 Tunnel
 
-3. 選擇「Public Hostname」標籤
+3. 選擇「Published application routes」標籤
 
-4. 點擊「Add a public hostname」
+4. 點擊「Add a published application route」
 
    ![](https://img.allenspace.de/Fasa-file-F1F8DC90-B44B-498A-9B14-DA2575AB4E6A.3goti04b0m.webp)
 
