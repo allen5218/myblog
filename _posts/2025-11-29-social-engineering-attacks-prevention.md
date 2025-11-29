@@ -43,7 +43,7 @@ tags:
 
 ### 馬其諾防線的啟示
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VMPkVRfWc04?si=ak4OXLsbnprW5VNA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VMPkVRfWc04?si=ak4OXLsbnprW5VNA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 #### 防禦的破口
 
@@ -152,7 +152,7 @@ AI 也會被「社交工程」！攻擊者透過精心設計的提示詞，誘�
 
 ## 降低資料收集風險
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Fmkn8jmm-ec?si=PqMi3Hngsp7NXJO4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Fmkn8jmm-ec?si=PqMi3Hngsp7NXJO4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### 實用技巧
 
