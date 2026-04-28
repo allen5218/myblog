@@ -5,6 +5,7 @@ subtitle:   "一個拖延者學會學的過程"
 date:       2026-04-26
 author:     "Allen"
 header-img: ""
+header-bg-css: "linear-gradient(to right, #5d4e6d, #4a5568);"
 catalog: true
 tags:
     - 學會學
