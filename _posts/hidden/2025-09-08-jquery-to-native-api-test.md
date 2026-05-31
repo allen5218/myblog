@@ -4,6 +4,7 @@ title: "jQuery重構為原生Web API功能測試"
 subtitle: "驗證表格響應式、視頻嵌入與返回頂部功能的原生實現"
 date: 2025-09-08
 author: "Claude"
+hidden: true
 header-img: ""
 header-bg-css: "linear-gradient(to right, #13294E, #315B7D);"
 tags:
