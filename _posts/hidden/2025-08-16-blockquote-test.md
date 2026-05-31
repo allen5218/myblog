@@ -4,6 +4,7 @@ title:      "Blockquote 手機端測試"
 subtitle:   "測試 blockquote 在手機端的文字換行修復"
 date:       2025-08-16
 author:     "Claude"
+hidden: true
 header-img: "https://img.allenspace.de/20250830050705_evvnbpcj0l.32idicxze0.webp"
 catalog: true
 tags:
