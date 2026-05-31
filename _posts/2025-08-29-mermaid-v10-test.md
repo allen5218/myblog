@@ -4,6 +4,7 @@ title: "Mermaid 10.9.0 升級測試"
 subtitle: "驗證新版本功能與深色模式適配"
 date: 2025-08-29
 author: "Claude"
+hidden: true
 header-img: "https://img.allenspace.de/20250829134534_8uey3fsxe7.4n84htz7e2.webp"
 tags:
     - Mermaid
